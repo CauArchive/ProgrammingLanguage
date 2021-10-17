@@ -4,9 +4,9 @@ int i = 0;
 int a[2] = {1, 1};
 
 void p(int *x, int *y) {
-  *x = *x + 1;
+  (*x)++;
   i++;
-  *y = *y + 1;
+  (*y)++;
 }
 
 int main() {
