@@ -3,21 +3,17 @@
 int i = 0;
 int a[2] = {1, 1};
 
-void p(int x, int y) {
+int* thunk(int* array, int i) { return &array[i]; }
+
+void p(int x, int y, int* (*f)(int*, int)) {
   x++;
+  *f(a, i) = x; 
   i++;
   y++;
+  *f(a, i) = y;
 }
 
 int main() {
-  p(a[i], a[i]);
+  p(a[i], a[i], thunk);
   printf("%d %d\n", a[0], a[1]);
 }
-
-/*
-value: a[0]=1, a[1]=1
-reference: a[0]=3, a[1]=1
-value-result (call): a[0]=2, a[1]=1
-value-result (return): a[0]=1, a[1]=2
-name: a[0]=2, a[1]=2
-*/
