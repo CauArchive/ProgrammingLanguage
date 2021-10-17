@@ -3,14 +3,16 @@
 int i = 0;
 int a[2] = {1, 1};
 
-void p(int x, int y) {
+void p(int x, int y, int* x_address, int* y_address) {
   x++;
   i++;
   y++;
+  *(x_address + i) = x;
+  *(y_address + i) = y;
 }
 
 int main() {
-  p(a[i], a[i]);
+  p(a[i], a[i], &a[i], &a[i]);
   printf("%d %d\n", a[0], a[1]);
 }
 
